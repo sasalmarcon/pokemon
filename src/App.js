@@ -3,6 +3,7 @@ import apiCall from './services/apiCall';
 import {Routes, Route} from 'react-router-dom';
 import Layout from './components/Layout';
 import ShowPokemons from './components/ShowPokemons';
+import ParticlesBg from 'particles-bg';
 
 export const PokemonContext = React.createContext();
 
@@ -12,16 +13,8 @@ const reducer = (state,action)=>{
     case "FETCH_DATA":
       return {...state,...action.value};
     case "NEXT":
-      if(action.url === null)
-        {
-          return {...state};
-        }
       return {...state,url:action.url}
       case "PREV":
-        if(action.url === null)
-        {
-          return {...state};
-        }
         return {...state,url:action.url}
         case "LAST":
           return {...state,url:action.url};
@@ -37,6 +30,7 @@ const reducer = (state,action)=>{
 
 function App() {
   const [pokemonData,dispatch] = useReducer(reducer,initialState);
+  // config
   
  
   // api call
@@ -61,6 +55,7 @@ function App() {
           </Route>
       </Routes>
     </div>
+    <ParticlesBg type="random"   bg={true} />
     </PokemonContext.Provider>
   );
 }
