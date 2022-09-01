@@ -30,16 +30,46 @@ export default function Card(props) {
             BACKGROUND2 = 'bg-green-100';
             break;
         case 'electric':
+            FROM = 'from-purple-700';
+            TO = 'to-yellow-200';
+            TYPE = 'bg-yellow-700'
+            BACKGROUND = 'bg-orange-200';
+            BACKGROUND2 = 'bg-orange-100';
             break;
         case 'psychic':
+            FROM = 'from-pink-700';
+            TO = 'to-purple-200';
+            TYPE = 'bg-pink-500'
+            BACKGROUND = 'bg-pink-200';
+            BACKGROUND2 = 'bg-pink-100';
             break;
         case 'ice':
+            FROM = 'from-blue-700';
+            TO = 'to-cyan-200';
+            TYPE = 'bg-blue-500'
+            BACKGROUND = 'bg-cyan-200';
+            BACKGROUND2 = 'bg-cyan-100';
             break;
         case 'dragon':
+            FROM = 'from-blue-700';
+            TO = 'to-violet-500';
+            TYPE = 'bg-violet-500'
+            BACKGROUND = 'bg-slate-200';
+            BACKGROUND2 = 'bg-slate-100';
             break;
         case 'dark':
+            FROM = 'from-blue-900';
+            TO = 'to-violet-700';
+            TYPE = 'bg-violet-600'
+            BACKGROUND = 'bg-slate-300';
+            BACKGROUND2 = 'bg-slate-100';
             break;
         case 'fairy':
+            FROM = 'from-pink-200';
+            TO = 'to-pink-400';
+            TYPE = 'bg-green-500'
+            BACKGROUND = 'bg-violet-200';
+            BACKGROUND2 = 'bg-cyan-100';
             break;
         default:
              FROM = 'from-gray-500';
@@ -56,7 +86,7 @@ export default function Card(props) {
        
         {/* image */}
         <div className = {`${BACKGROUND} flex justify-center items-center h-1/3`}>
-           <img className = "h-40 "src = {props.image} alt = ""/>
+           <img className = "h-40"src = {props.image} alt = "Not Available"/>
         </div>
         {/* element */}
         <div className = {`${TYPE} inline absolute -translate-y-3`}>

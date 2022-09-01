@@ -6,7 +6,7 @@ import SearchFilter from './SearchFilter'
 
 export default function Layout() {
   return (
-    <div>
+    <div className='flex flex-col h-screen'>
       <Navbar/>
       <SearchFilter/>
       <Outlet/>

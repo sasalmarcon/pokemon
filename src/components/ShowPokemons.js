@@ -1,4 +1,5 @@
 import React,{ useContext, useEffect, useState } from 'react';
+import {nanoid} from 'nanoid';
 import Card from './Card';
 import { PokemonContext } from '../App';
 import apiCall from '../services/apiCall';
@@ -77,18 +78,20 @@ export default function ShowPokemons() {
             {
                image = 'dream_world';
             }
+            if(pokemon[index].sprites.other['home'].front_default === null){
+                image = 'official-artwork';
+              }
            if(pokemon[index].sprites.other['dream_world'].front_default === null)
            {
                image ='home';
            }
-           if(pokemon[index].sprites.other['home'].front_default === null){
-              image = 'official-artwork';
-            }
+          
          }
         
         return (
-            <>
-            {!loading && <Card name = {poke.name}
+            <React.Fragment key={nanoid()}>
+            {!loading && <Card key = {poke.name}
+                               name = {poke.name}
                                image = {pokemon.length > 0 ? pokemon[index].sprites.other[`${image}`].front_default:''}
                                type = {pokemon.length > 0 ? pokemon[index].types[0].type.name:''}
                                hp = {pokemon.length > 0 ? pokemon[index].stats[0].base_stat:''}
@@ -96,11 +99,11 @@ export default function ShowPokemons() {
                                specialAttack = {pokemon.length > 0 ? pokemon[index].stats[3].base_stat:''}
                                defense = {pokemon.length > 0 ? pokemon[index].stats[2].base_stat:''}
                                speed = {pokemon.length > 0 ? pokemon[index].stats[5].base_stat:''}
-                               specialDefense = {pokemon.length > 0 ? pokemon[index].stats[4].base_stat.type:''}
-                               ability = {pokemon.length > 0 ? pokemon[index].abilities[0].ability.name:''}
+                               specialDefense = {pokemon.length > 0 ? pokemon[index].stats[4].base_stat:''}
+                               ability = {pokemon.length > 0  && pokemon[index].abilities.length > 0 ? pokemon[index].abilities[0].ability.name:'none'}
                                specialAbility = {pokemon.length > 0 && pokemon[index].abilities.length > 1 ? pokemon[index].abilities[1].ability.name:'none'}
             />}
-            </>
+            </React.Fragment>
             
         )
        })
@@ -112,7 +115,7 @@ export default function ShowPokemons() {
         {cards}
     </div>
     {/* Pagination */}
-    <div className='border-2 flex items-center justify-center w-screen fixed bottom-0'>
+    <div className='flex items-center justify-center w-screen fixed bottom-0'>
         <button disabled = {loading || currentPage === 1} onClick = {pageHandler} className='bg-yellow-500 px-2 mx-2' id = "first">First</button>
         <button disabled = {loading || currentPage === 1} onClick = {pageHandler} className='bg-yellow-500 px-2 mx-2' id = "prev">Prev</button>
         <p className='mx-2 bg-green-500 px-2 py-1 rounded'>{currentPage}/{58}</p>

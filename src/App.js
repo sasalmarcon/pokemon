@@ -3,6 +3,7 @@ import apiCall from './services/apiCall';
 import {Routes, Route} from 'react-router-dom';
 import Layout from './components/Layout';
 import ShowPokemons from './components/ShowPokemons';
+import Pokemon from './components/Pokemon';
 import ParticlesBg from 'particles-bg';
 
 export const PokemonContext = React.createContext();
@@ -48,10 +49,11 @@ function App() {
 
   return (
     <PokemonContext.Provider value = {{pokemonState:pokemonData,pokemonDispatch:dispatch}}>
-    <div className="App">
+    <div className="">
       <Routes>
           <Route path = "/" element = {<Layout/>}>
             <Route index element = {<ShowPokemons/>}/>
+            <Route path = "/pokemon/:id" element = {<Pokemon/>}/>
           </Route>
       </Routes>
     </div>
