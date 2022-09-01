@@ -45,7 +45,7 @@ function App() {
 
   
 
-  console.log(pokemonData);
+
 
   return (
     <PokemonContext.Provider value = {{pokemonState:pokemonData,pokemonDispatch:dispatch}}>
