@@ -12,7 +12,6 @@ export default function ShowPokemons() {
     const [pokemon,setPokemon] = useState([]);
     const [loading,setLoading] = useState(false);
     
-    console.log(pokemon)
     function pageHandler(e)
     {
         // Pagination
@@ -22,12 +21,12 @@ export default function ShowPokemons() {
                 setLoading(true);
                 setPokemon([]);
                 setCurrentPage(1);
-                return pokemonContext.pokemonDispatch({type:'NEXT',url:"https://pokeapi.co/api/v2/pokemon?offset=0&limit=20"});        
+                return pokemonContext.pokemonDispatch({type:'CHANGE_PAGE',url:"https://pokeapi.co/api/v2/pokemon?offset=0&limit=20"});        
             case 'last':
                 setLoading(true);
                 setPokemon([]);
                 setCurrentPage(58);
-               return pokemonContext.pokemonDispatch({type:'NEXT',url:"https://pokeapi.co/api/v2/pokemon?offset=1140&limit=20"});
+               return pokemonContext.pokemonDispatch({type:'CHANGE_PAGE',url:"https://pokeapi.co/api/v2/pokemon?offset=1140&limit=20"});
             case 'next':
                 setLoading(true);
                 setCurrentPage(prev=>{
@@ -35,7 +34,7 @@ export default function ShowPokemons() {
                     else 
                     return prev + 1
                 });
-                pokemonContext.pokemonDispatch({type:'NEXT',url:pokemonContext.pokemonState.next});
+                pokemonContext.pokemonDispatch({type:'CHANGE_PAGE',url:pokemonContext.pokemonState.next});
                 break;
             case 'prev':
                 setLoading(true);
@@ -44,7 +43,7 @@ export default function ShowPokemons() {
                     else 
                     return prev-1;
                 });
-                pokemonContext.pokemonDispatch({type:'PREV',url:pokemonContext.pokemonState.previous});
+                pokemonContext.pokemonDispatch({type:'CHANGE_PAGE',url:pokemonContext.pokemonState.previous});
                 break;
 
             default:

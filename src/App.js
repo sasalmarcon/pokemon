@@ -13,14 +13,8 @@ const reducer = (state,action)=>{
   switch(action.type){
     case "FETCH_DATA":
       return {...state,...action.value};
-    case "NEXT":
+    case "CHANGE_PAGE":
       return {...state,url:action.url}
-      case "PREV":
-        return {...state,url:action.url}
-        case "LAST":
-          return {...state,url:action.url};
-        case "FIRST":
-        return {...state,url:action.url}
     default:
       return state;
 
